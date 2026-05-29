@@ -129,7 +129,7 @@ def ct_to_copies(ct, slope, intercept):
 
 def print_curve_summary(name, slope, intercept, r2, efficiency, ct_pairs):
     print("\n" + "═" * 52)
-    print(f"  STANDARD CURVE — {name}")
+    print(f"  STANDARD CURVE - {name}")
     print("═" * 52)
     print(f"  Equation  : Ct = {slope:.4f} × log₁₀(copies) + {intercept:.4f}")
     print(f"  R²        : {r2:.5f}")
@@ -151,7 +151,7 @@ def print_curve_summary(name, slope, intercept, r2, efficiency, ct_pairs):
 
 
 def print_unknowns(name, unknowns, slope, intercept, ct_min, ct_max):
-    print(f"\n  UNKNOWNS — {name}")
+    print(f"\n  UNKNOWNS - {name}")
     print("  " + "─" * 50)
     print(f"  {'Well':<8} {'Ct':<10} {'Gene Copies':<18} {'Note'}")
     print("  " + "─" * 50)
