@@ -1,7 +1,7 @@
 from qpcr_functions import run_analysis
 
 
-FILE_PATH = r"C:\Users\ksdan\OneDrive\Desktop\AAV20260526KD_data.xlsx"   # Windows
+FILE_PATH = r"C:\Users\ksdan\OneDrive\Desktop\AAV20260526KD_data.xlsx"
 
 # ── Define your assays ─────────────────────────────────────────────────────
 #
