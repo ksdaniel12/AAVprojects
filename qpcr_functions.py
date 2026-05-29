@@ -132,9 +132,9 @@ def print_curve_summary(name, slope, intercept, r2, efficiency, ct_pairs):
     print(f"  STANDARD CURVE — {name}")
     print("═" * 52)
     print(f"  Equation  : Ct = {slope:.4f} × log₁₀(copies) + {intercept:.4f}")
-    print(f"  R²        : {r2:.5f}  {'✓' if r2 >= 0.98 else '✗  (should be ≥ 0.98)'}")
-    print(f"  Efficiency: {efficiency:.1f}%  {'✓' if 90 <= efficiency <= 110 else '✗  (should be 90–110%)'}")
-    print(f"  Slope     : {slope:.4f}  {'✓' if -3.6 <= slope <= -3.1 else '✗  (should be -3.6 to -3.1)'}")
+    print(f"  R²        : {r2:.5f}}")
+    print(f"  Efficiency: {efficiency:.1f}%")
+    print(f"  Slope     : {slope:.4f}'}")
 
     grouped = defaultdict(list)
     for copies, ct in ct_pairs:
@@ -157,7 +157,7 @@ def print_unknowns(name, unknowns, slope, intercept, ct_min, ct_max):
     print("  " + "─" * 50)
     for well, ct in unknowns:
         copies = ct_to_copies(ct, slope, intercept)
-        note   = "⚠ outside std range" if not (ct_min <= ct <= ct_max) else ""
+        note   = "outside std range" if not (ct_min <= ct <= ct_max) else ""
         print(f"  {well:<8} {ct:<10.2f} {copies:<18.3e} {note}")
 
 
@@ -205,7 +205,7 @@ def export_tsv(filepath, plate, assay_results):
         lines.append("")
         lines.append("")
 
-    out = Path.cwd() / (Path(filepath).stem + ".results.tsv")
+    out = Path(filepath).parent / (Path(filepath).stem + ".results.tsv")
     out.write_text("\n".join(lines), encoding="utf-8")
     print(f"\n  Results saved → {out}\n")
 
@@ -253,7 +253,7 @@ def run_analysis(filepath, assays):
         try:
             slope, intercept, r2, efficiency, ct_pairs = fit_curve(df, std_cols, std_rows)
         except ValueError as e:
-            print(f"\n  ✗ {name}: {e}")
+            print(f"\n  FAIL {name}: {e}")
             continue
 
         ct_min = min(ct for _, ct in ct_pairs)
