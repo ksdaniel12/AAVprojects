@@ -132,9 +132,9 @@ def print_curve_summary(name, slope, intercept, r2, efficiency, ct_pairs):
     print(f"  STANDARD CURVE — {name}")
     print("═" * 52)
     print(f"  Equation  : Ct = {slope:.4f} × log₁₀(copies) + {intercept:.4f}")
-    print(f"  R²        : {r2:.5f}}")
+    print(f"  R²        : {r2:.5f}")
     print(f"  Efficiency: {efficiency:.1f}%")
-    print(f"  Slope     : {slope:.4f}'}")
+    print(f"  Slope     : {slope:.4f}")
 
     grouped = defaultdict(list)
     for copies, ct in ct_pairs:
